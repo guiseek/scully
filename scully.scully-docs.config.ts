@@ -7,6 +7,7 @@ import {
 import { DisableAngular } from 'scully-plugin-disable-angular';
 import './demos/plugins/docs-link-update';
 import { LogRocket } from '@scullyio/plugins/logrocket';
+import { GoogleAnalytics } from '@scullyio/plugins/google-analytics';
 
 setPluginConfig('md', { enableSyntaxHighlighting: true });
 
@@ -15,8 +16,11 @@ const defaultPostRenderers = [DisableAngular];
 if (prod) {
   setPluginConfig(LogRocket, { app: 'herodevs', id: 'scully' });
   defaultPostRenderers.push(LogRocket);
+
+  // setPluginConfig(GoogleAnalytics, { app: 'herodevs', id: 'scully' });
+  // defaultPostRenderers.push(GoogleAnalytics);
 } else {
-  // This is for check the plugin with the test
+  // Tests LogRocket plugin
   setPluginConfig(LogRocket, { app: 'test', id: 'test' });
   defaultPostRenderers.push(LogRocket);
 }
